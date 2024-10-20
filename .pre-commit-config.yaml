@@ -1,0 +1,51 @@
+---
+# .pre-commit-config.yaml
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+        types: [yaml]
+        files: \.(yaml)$
+  - repo: https://github.com/psf/black
+    rev: 24.10.0
+    hooks:
+      - id: black
+        language_version: python3
+  - repo: https://github.com/PyCQA/pylint
+    rev: v3.3.1
+    hooks:
+      - id: pylint
+        name: pylint
+        entry: pylint
+        language: system
+        types: [python]
+        args: [--rcfile=.pylintrc, .]
+  - repo: local
+    hooks:
+      - id: yaml-format
+        name: yaml-format
+        entry: python scripts/format_yaml.py
+        language: system
+        types: [yaml]
+        files: \.(yaml)$
+      - id: commit-msg-version-check
+        name: commit-msg-version-check
+        entry: python scripts/commit_msg_version_bump.py
+        always_run: true
+        language: system
+        args: [.git/COMMIT_EDITMSG]
+        stages: [pre-push]
+      - id: generate-changelog
+        name: generate-changelog
+        entry: python scripts/generate_changelog.py
+        always_run: true
+        language: system
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v4.0.0-alpha.8
+    hooks:
+      - id: prettier
+        files: \.(markdown|md)$
