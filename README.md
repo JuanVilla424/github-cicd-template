@@ -4,9 +4,9 @@
 ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=fff)
 ![License](https://img.shields.io/github/license/JuanVilla424/aws-scripts)
 
-Welcome to the **GitHub CI/CD Template** repository! This project provides a robust and flexible CI/CD pipeline setup using GitHub Actions, tailored for Python projects. Leverage this template to automate your development workflow, from testing and building to deployment and monitoring.
+Welcome to the **GitHub CI/CD Template** repository! This project provides a robust and flexible CI/CD pipeline setup using GitHub Actions, tailored for project using Python for backend, node frontend, docker-compose or Dockerfile. Leverage this template to automate your development workflow, from testing and building to deployment and monitoring.
 
-<img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flogos-world.net%2Fwp-content%2Fuploads%2F2020%2F11%2FGitHub-Logo.png&f=1&nofb=1&ipt=82707a92fa275fabf02350fe9a7de1ad3101348a5e668f5374d2dea7f9b2836b&ipo=images" width="130" alt="CI/CD">
+<img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pngkey.com%2Fpng%2Ffull%2F178-1787243_github-icon-png.png&f=1&nofb=1&ipt=913bc5d745baa725efe14b20bdf6ca3f91044c2be909e8504cc79f13dc0b1729&ipo=images" width="112" alt="CI/CD">
 
 ## 📚 Table of Contents
 
@@ -122,7 +122,10 @@ pre-commit run --all-files
 1. **Configure GitHub Actions**
 
    - Navigate to the .github/workflows/ directory.
-   - Customize the ci-cd.yml file according to your project's requirements.
+   - Customize the ci.yml file according to your project's requirements.
+   - Customize the python.yml file to format and lint python code.
+   - Customize the node.yml file to format and lint node.js code if you are hosting frontend.
+   - Customize the release-controller file to add or remove **[backend, frontend, docker deployment, database]**
 
 2. **Set Up Secrets**
 
@@ -147,19 +150,19 @@ pre-commit run --all-files
 2. **Create a Feature Branch**
 
    ```bash
-   git checkout -b feature/YourFeature
+   git checkout -b feature/your-feature
    ```
 
 3. **Commit Your Changes**
 
    ```bash
-   git commit -m "Add YourFeature"
+   git commit -m "feat(<scope>): your feature commit message - lower case"
    ```
 
 4. **Push to the Branch**
 
    ```bash
-   git push origin feature/YourFeature
+   git push origin feature/your-feature
    ```
 
 5. **Open a Pull Request into** `dev` **branch**
@@ -181,8 +184,8 @@ Please ensure your contributions adhere to the Code of Conduct and Contribution 
 3. **Commit and Push**
    ```bash
    git add .github/workflows/new-workflow.yml
-   git commit -m "Add new CI workflow for feature X"
-   git push origin feature/YourFeature
+   git commit -m "chore(core): added new workflow - lower case"
+   git push origin feature/your-feature
    ```
 
 ## 📫 Contact
