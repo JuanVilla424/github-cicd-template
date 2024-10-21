@@ -25,24 +25,53 @@ repos:
         types: [python]
         args: [--rcfile=.pylintrc, .]
         exclude: ^node_modules/
+  - repo: https://github.com/hadolint/hadolint
+    rev: v2.13.1-beta
+    hooks:
+      - id: hadolint
+        name: hadolint
+        entry: hadolint
+        language: system
+        types: [dockerfile]
+        files: ^Dockerfile$
   - repo: local
     hooks:
       - id: yaml-format
         name: yaml-format
-        entry: python scripts/format_yaml.py
+        entry: python scripts/format_yaml/function.py
         language: system
         types: [yaml]
         files: \.(yaml)$
+        exclude: '.github/.*'
+      - id: yml-format
+        name: yml-format
+        entry: python scripts/format_yml/function.py
+        language: system
+        types: [yaml]
+        files: \.(yml)$
+      - id: yamllint
+        name: yamllint
+        entry: yamllint
+        language: system
+        types: [yaml]
+        files: \.(yml|yaml)$
+        exclude: '.github/.*'
+      - id: docker-compose
+        name: docker-compose
+        entry: python scripts/validate_docker_compose/function.py
+        language: system
+        types: [yaml]
+        files: ^docker-compose(\.dev|\.prod)?\.yml$
       - id: commit-msg-version-check
         name: commit-msg-version-check
-        entry: python scripts/commit_msg_version_bump.py
+        entry: python scripts/commit_msg_version_bump/function.py
         always_run: true
         language: system
         args: [.git/COMMIT_EDITMSG]
         stages: [pre-push]
       - id: generate-changelog
         name: generate-changelog
-        entry: python scripts/generate_changelog.py
+        entry: python scripts/generate_changelog/function.py
         always_run: true
         language: system
   - repo: https://github.com/pre-commit/mirrors-prettier
