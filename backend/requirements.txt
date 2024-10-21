@@ -1,0 +1,35 @@
+# requirements-dev.txt
+
+# Pylint for Linting
+pylint>=3.3.1
+
+# Black for Code Formatting
+black>=24.3.0
+
+# isort for Import Sorting
+isort>=5.12.0
+
+# pre-commit for Managing Git Hooks
+pre-commit>=4.0.1
+
+# HTTPX for Asynchronous HTTP Requests
+httpx>=0.24.0
+
+# Idna for Poetry
+idna>=3.0
+
+# Certifi for Poetry
+certifi>=2024.8.30
+
+# Alembic for Database Migrations
+alembic>=1.11.1
+
+# Pytest for Unit/Integration Testing
+pytest>=7.3.1
+pytest-cov>=4.0.0
+
+# Coverage Reporting
+coverage>=7.2.5
+
+# Lint Check
+yamllint>=1.35.0

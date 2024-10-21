@@ -24,6 +24,7 @@ repos:
         language: system
         types: [python]
         args: [--rcfile=.pylintrc, .]
+        exclude: ^node_modules/
   - repo: local
     hooks:
       - id: yaml-format
