@@ -27,7 +27,8 @@ jobs:
       - name: Format backend check with Black
         run: |
           source venv/bin/activate
-          black --check
+          black --check app/
+          black --check tests/
           black --check ../scripts/
         working-directory: backend
       - name: Lint backend with Pylint
