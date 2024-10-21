@@ -49,6 +49,7 @@ repos:
         language: system
         types: [yaml]
         files: \.(yml)$
+        exclude: '.github/.*'
       - id: yamllint
         name: yamllint
         entry: yamllint
