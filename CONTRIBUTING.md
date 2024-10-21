@@ -1,10 +1,10 @@
-# 🤝 Contributing to aws-lambda
+# 🤝 Contributing to github-cicd-template
 
-We welcome contributions to aws-lambda! To make sure the process goes smoothly, please follow these guidelines:
+We welcome contributions to github-cicd-template! To make sure the process goes smoothly, please follow these guidelines:
 
 ## 📋 Code of Conduct
 
-Please note that all participants in our project are expected to follow our [Code of Conduct](#). Make sure to review it before contributing.
+Please note that all participants in our project are expected to follow our [Code of Conduct](#-code-of-conduct). Make sure to review it before contributing.
 
 ## 🛠 How to Contribute
 
@@ -48,6 +48,6 @@ Thank you for helping improve!
 
 ---
 
-## 📝 License
+## 📜 License
 
-© 2024 **Quipux**. All rights reserved. Unauthorized use, reproduction, or distribution is strictly prohibited.
+2024 - This project is licensed under the [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.en.html). You are free to use, modify, and distribute this software under the terms of the GPL-3.0 license. For more details, please refer to the [LICENSE](LICENSE) file included in this repository.

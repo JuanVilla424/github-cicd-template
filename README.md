@@ -2,7 +2,7 @@
 
 ![CI/CD](https://img.shields.io/badge/CI/CD-Pipeline-blue)
 ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=fff)
-![License](https://img.shields.io/github/license/JuanVilla424/aws-scripts)
+![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)
 
 Welcome to the **GitHub CI/CD Template** repository! This project provides a robust and flexible CI/CD pipeline setup using GitHub Actions, tailored for project using Python for backend, node frontend, docker-compose or Dockerfile. Leverage this template to automate your development workflow, from testing and building to deployment and monitoring.
 
@@ -150,7 +150,7 @@ pre-commit run --all-files
 2. **Create a Feature Branch**
 
    ```bash
-   git checkout -b feature/your-feature
+   git checkout -b feature/your-feature-name
    ```
 
 3. **Commit Your Changes**
@@ -162,7 +162,7 @@ pre-commit run --all-files
 4. **Push to the Branch**
 
    ```bash
-   git push origin feature/your-feature
+   git push origin feature/your-feature-name
    ```
 
 5. **Open a Pull Request into** `dev` **branch**
@@ -185,7 +185,7 @@ Please ensure your contributions adhere to the Code of Conduct and Contribution 
    ```bash
    git add .github/workflows/new-workflow.yml
    git commit -m "chore(core): added new workflow - lower case"
-   git push origin feature/your-feature
+   git push origin feature/your-feature-name
    ```
 
 ## 📫 Contact
@@ -196,4 +196,4 @@ For any inquiries or support, please open an issue or contact [email@dominio.com
 
 ## 📜 License
 
-© 2024 Juan Villa. All rights reserved. Unauthorized use, reproduction, or distribution is strictly prohibited.
+2024 - This project is licensed under the [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.en.html). You are free to use, modify, and distribute this software under the terms of the GPL-3.0 license. For more details, please refer to the [LICENSE](LICENSE) file included in this repository.

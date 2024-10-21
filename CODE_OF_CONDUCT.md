@@ -4,7 +4,7 @@ Take Note About This... **Take Note...**
 
 ## 🤝 Our Commitment
 
-We are committed to fostering an open and welcoming environment for all contributors. As such, everyone who participates in **Quipux** is expected to adhere to the following code of conduct.
+We are committed to fostering an open and welcoming environment for all contributors. As such, everyone who participates in **GitHub CICD Template** is expected to adhere to the following code of conduct.
 
 ## 🌟 Expected Behavior
 
@@ -23,7 +23,7 @@ We are committed to fostering an open and welcoming environment for all contribu
 
 ## 📢 Reporting Misconduct
 
-If you encounter any behavior that violates this code of conduct, please report it by contacting [juan.villa@quipux.com](mailto:juan.villa@quipux.com). All complaints will be reviewed and handled appropriately.
+If you encounter any behavior that violates this code of conduct, please report it by contacting [email@dominio.com](mailto:email@dominio.com). All complaints will be reviewed and handled appropriately.
 
 ## ⚖️ Enforcement
 
@@ -35,6 +35,6 @@ This code of conduct is adapted from the [Contributor Covenant, version 2.0](htt
 
 ---
 
-## 📝 License
+## 📜 License
 
-© 2024 **Quipux**. All rights reserved. Unauthorized use, reproduction, or distribution is strictly prohibited.
+2024 - This project is licensed under the [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.en.html). You are free to use, modify, and distribute this software under the terms of the GPL-3.0 license. For more details, please refer to the [LICENSE](LICENSE) file included in this repository.
