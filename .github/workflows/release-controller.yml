@@ -47,7 +47,10 @@ jobs:
         id: package_version
         run: |
           zip -r "${REPO_NAME}-${GITHUB_REF_NAME}.zip" \
-            "${FOLDER_TO_COMPRESS}"
+            {INSTALL,SECURITY,README,ICONS,CONTRIBUTING,CODE_OF_CONDUCT}.md \
+            requirements.txt .github scripts frontend backend \
+            pyproject.toml
+#            "${FOLDER_TO_COMPRESS}"
         env:
           REPO_NAME: ${{ env.REPO_NAME }}
           GITHUB_REF_NAME: ${{ github.ref_name }}
