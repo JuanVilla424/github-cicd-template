@@ -77,6 +77,7 @@ jobs:
           TAG_NAME="v${VERSION}-${BRANCH_NAME}"
           git tag "$TAG_NAME"
           echo "tag_name=$TAG_NAME" >> $GITHUB_OUTPUT
+        continue-on-error: true
       - name: Push Tag
         id: push_tag
         if: steps.check_arrow.outputs.contains_arrow == 'true'
