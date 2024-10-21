@@ -59,7 +59,7 @@ jobs:
       - name: Run Changelog Generator
         id: run_changelog
         run: |
-          python scripts/generate_changelog.py
+          python scripts/generate_changelog/main.py
       - name: Check for Forbidden Character
         id: check_arrow
         run: |
