@@ -31,9 +31,7 @@ def format_yml_file(file_path):
         line = re.sub(r"\s+\)", ")", line)
         if line != original_line:
             lines[i] = line
-            print(
-                f"[FORMAT] Removed extra spaces inside brackets in line {i+1} of {file_path}."
-            )
+            print(f"[FORMAT] Removed extra spaces inside brackets in line {i+1} of {file_path}.")
 
     for i, line in enumerate(lines, start=1):
         current_indent = len(line) - len(line.lstrip(" "))
@@ -42,9 +40,7 @@ def format_yml_file(file_path):
             split_pos = line.rfind(" ", 0, 120)
             if split_pos != -1:
                 split_line1 = line[:split_pos] + " \\"
-                split_line2 = (
-                    " " * current_indent + " " + line[split_pos + 1 :].lstrip()
-                )
+                split_line2 = " " * current_indent + " " + line[split_pos + 1 :].lstrip()
                 new_lines.append(split_line1)
                 new_lines.append(split_line2)
                 print(f"[FORMAT] Split long line at line {i} in {file_path}.")

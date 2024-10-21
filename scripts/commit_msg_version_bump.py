@@ -49,9 +49,7 @@ def bump_version(part: str) -> None:
 
     # Commit the change
     try:
-        subprocess.run(
-            ["git", "commit", "-m", f"Bump {part} version to {new_version}"], check=True
-        )
+        subprocess.run(["git", "commit", "-m", f"Bump {part} version to {new_version}"], check=True)
         print(f"Committed the bumped {part} version to {new_version}.")
     except subprocess.CalledProcessError:
         print(f"Failed to commit the bumped {part} version.")

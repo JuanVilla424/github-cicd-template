@@ -73,18 +73,14 @@ def get_commits_since_version(version: str) -> List[str]:
     try:
         if version:
             commits = (
-                subprocess.check_output(
-                    ["git", "log", f"v{version}..HEAD", "--pretty=format:%s"]
-                )
+                subprocess.check_output(["git", "log", f"v{version}..HEAD", "--pretty=format:%s"])
                 .decode()
                 .split("\n")
             )
         else:
             # If no version found in CHANGELOG, get all commits
             commits = (
-                subprocess.check_output(["git", "log", "--pretty=format:%s"])
-                .decode()
-                .split("\n")
+                subprocess.check_output(["git", "log", "--pretty=format:%s"]).decode().split("\n")
             )
         return commits
     except subprocess.CalledProcessError:

@@ -30,9 +30,7 @@ def format_yaml_file(file_path):
         line = re.sub(r"\s+\)", ")", line)
         if line != original_line:
             lines[i] = line
-            print(
-                f"[FORMAT] Removed extra spaces inside brackets in line {i+1} of {file_path}."
-            )
+            print(f"[FORMAT] Removed extra spaces inside brackets in line {i+1} of {file_path}.")
 
     inside_run_block = False
     new_lines = []
@@ -51,18 +49,14 @@ def format_yaml_file(file_path):
                 split_line2 = "  " + line[split_pos + 1 :].lstrip()
                 new_lines.append(split_line1)
                 new_lines.append(split_line2)
-                print(
-                    f"[FORMAT] Split long line in 'run' block at line {i+1} of {file_path}."
-                )
+                print(f"[FORMAT] Split long line in 'run' block at line {i+1} of {file_path}.")
                 continue
             if not split_pos != -1:
                 split_line1 = line[:120]
                 split_line2 = "  " + line[120:].lstrip()
                 new_lines.append(split_line1)
                 new_lines.append(split_line2)
-                print(
-                    f"[FORMAT] Split long line in 'run' block at line {i+1} of {file_path}."
-                )
+                print(f"[FORMAT] Split long line in 'run' block at line {i+1} of {file_path}.")
                 continue
 
         new_lines.append(line)
