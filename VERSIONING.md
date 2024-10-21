@@ -19,7 +19,7 @@ Our repository uses the following branches to manage the development and release
 
 ## 📝 Commit Message Guidelines
 
-To automate versioning and changelog generation, it's essential to follow specific commit message conventions. Each commit message should include one of the following [commit types](#commit-types) and an optional scope. Additionally, include one of the [versioning keywords](#versioning-keywords) to indicate the type of version bump.
+To automate versioning and changelog generation, it's essential to follow specific commit message conventions. Each commit message should include one of the following [commit types](#-commit-types) and an optional scope. Additionally, include one of the [versioning keywords](#-versioning-keywords) to indicate the type of version bump.
 
 ### 🗂️ Commit Message Structure
 
@@ -46,7 +46,7 @@ feat(authentication): add OAuth2 support [minor candidate]
 
 ### 🔑 Versioning Keywords
 
-Include one of the following keywords at the end of the commit message to indicate the type of version bump:
+**Optionally** Include one of the following keywords at the end of the commit message to indicate the type of version bump:
 
 - **[major candidate]** Indicates that this commit should trigger a MAJOR version bump.
 - **[minor candidate]** Indicates that this commit should trigger a MINOR version bump.
