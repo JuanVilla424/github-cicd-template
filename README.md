@@ -154,7 +154,7 @@ pre-commit run --all-files
 2. **Set Up Secrets**
 
    - Go to your GitHub repository settings.
-   - Navigate to Secrets and add necessary secrets like AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, etc.
+   - Navigate to Secrets and add necessary secrets like CODECOV_KEY, etc.
 
 3. **Triggering the Pipeline**
 
