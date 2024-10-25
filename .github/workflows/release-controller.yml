@@ -49,7 +49,7 @@ jobs:
           zip -r "${REPO_NAME}-${GITHUB_REF_NAME}.zip" \
             {INSTALL,SECURITY,README,ICONS,CONTRIBUTING,CODE_OF_CONDUCT}.md \
             requirements.txt .github scripts frontend backend \
-            pyproject.toml
+            pyproject.toml LICENSE
 #            "${FOLDER_TO_COMPRESS}"
         env:
           REPO_NAME: ${{ env.REPO_NAME }}
