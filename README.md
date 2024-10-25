@@ -16,6 +16,7 @@ Welcome to the **GitHub CI/CD Template** repository! This project provides a rob
   - [Installation](#-installation)
   - [Environment Setup](#-environment-setup)
   - [Pre-Commit Hooks](#-pre-commit-hooks)
+  - [Extra Steps](#-extra-steps)
 - [Usage](#-usage)
 - [Contributing](#-contributing)
 - [License](#-license)
@@ -39,7 +40,7 @@ Welcome to the **GitHub CI/CD Template** repository! This project provides a rob
 - **Python 3.12+:** Ensure Python is installed on your local machine.
 - **Git:** Install [Git](https://git-scm.com/) to clone the repository.
 - **NVM:** (Optional) Node.js installation environment versions control
-- **Node.js 22.x+**: (Optional) (Required to Push) Used as lintr orchestation commander in pre-commit and pre-push
+- **Node.js 22.x+**: (Optional) (Required to Push) Used as lint orchestration manager in pre-commit and pre-push
 
 ### 🔨 Installation
 
@@ -77,7 +78,13 @@ Setting up a Python virtual environment ensures that dependencies are managed ef
    On Windows:
 
    ```bash
-    venv\Scripts\activate
+    .\venv\Scripts\activate
+   ```
+
+   - or
+
+   ```bash
+    powershell.exe -ExecutionPolicy Bypass -File .\venv\Scripts\Activate.ps1
    ```
 
 3. **Upgrade pip**
@@ -103,6 +110,8 @@ Setting up a Python virtual environment ensures that dependencies are managed ef
     deactivate
    ```
 
+5. **Docker Extra Steps**: Install Scoop and then install hadolint using scoop, refer to [Extra Steps](#-extra-steps)
+
 ### 🛸 Pre-Commit Hooks
 
 **Install and check pre-commit hooks**: MD files changes countermeasures, python format, python lint, yaml format, yaml lint, version control hook, changelog auto-generation
@@ -114,6 +123,21 @@ pre-commit install -t pre-push
 pre-commit autoupdate
 pre-commit run --all-files
 ```
+
+### 📌 Extra Steps
+
+1. **Docker**:
+
+   - Using MacOs or Linux:
+     ```bash
+     brew install hadolint
+     ```
+   - On Windows **as non-admin user**:
+     ```bash
+     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+     Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
+     scoop install halint
+     ```
 
 ## 🛠️ Usage
 
@@ -130,7 +154,7 @@ pre-commit run --all-files
 2. **Set Up Secrets**
 
    - Go to your GitHub repository settings.
-   - Navigate to Secrets and add necessary secrets like AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, etc.
+   - Navigate to Secrets and add necessary secrets like CODECOV_KEY, etc.
 
 3. **Triggering the Pipeline**
 
