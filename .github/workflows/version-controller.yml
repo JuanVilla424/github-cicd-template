@@ -56,10 +56,19 @@ jobs:
           fi
           echo "next_branch=$NEXT_BRANCH" >> $GITHUB_OUTPUT
           echo "current_branch=$CURRENT_BRANCH" >> $GITHUB_OUTPUT
-      - name: Run Changelog Generator
-        id: run_changelog
+      - name: Add Modules
+        id: add_modules
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         run: |
-          python scripts/generate_changelog/main.py
+          git config --global url."https://${ACCESS_TOKEN}@github.com/".insteadOf "https://github.com/"
+          git rm -r --cached scripts || true
+          rm -rf scripts
+          git submodule add -b ${{ steps.determine_branch.outputs.current_branch }} https://github.com/JuanVilla424/scripts.git
+#      - name: Run Changelog Generator
+#        id: run_changelog
+#        run: |
+#          python scripts/generate_changelog/main.py
       - name: Check for Forbidden Character
         id: check_arrow
         run: |
@@ -99,8 +108,8 @@ jobs:
           script: |
             const head = '${{ steps.determine_branch.outputs.current_branch }}';
             const base = '${{ steps.determine_branch.outputs.next_branch }}';
-            const title = `from ${{ steps.determine_branch.outputs.current_branch }} - ${{ steps.get_commit.outputs.commit_message }} into ${{ steps.determine_branch.outputs.next_branch }}`;
-            const body = `Automatically created pull request for release ${{ steps.create_tag.outputs.tag_name }} into ${base} branch.`;
+            const title = `${{ steps.get_commit.outputs.commit_message }}`;
+            const body = `Automatically created pull request for release ${{ steps.create_tag.outputs.tag_name }} into ${base} branch. From ${{ steps.get_commit.outputs.commit_message }}`;
 
             const { data: existingPRs } = await github.rest.pulls.list({
               owner: context.repo.owner,
