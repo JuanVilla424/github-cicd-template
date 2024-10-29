@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "github-cicd-template"
-version = "1.0.4"
+version = "1.0.5"
 description = "Github CICD Template Repository"
 authors = ["B <g46327wsj1.marbling129@passinbox.com>"]
 license = "Apache 2.0"
@@ -40,6 +40,7 @@ exclude = '''
   | \.mypy_cache
   | \.tox
   | \.venv
+  | venv
   | _build
   | buck-out
   | build

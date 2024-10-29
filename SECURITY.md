@@ -6,11 +6,10 @@ Security Policy for **GitHub CICD Template** repository includes all required co
 
 We provide security updates for the following versions of our project:
 
-| Version  | Status      | Secure |
-| -------- | ----------- | ------ |
-| 2023.x.x | End-of-life | No     |
-| 2024.7.x | End-of-life | Yes    |
-| 2024.8.x | Supported   | Yes    |
+| Version | Status      | Secure |
+| ------- | ----------- | ------ |
+| 1.0.1   | End-of-life | No     |
+| >1.0.4  | Supported   | Yes    |
 
 ## 🛡️ Security Practices
 
@@ -29,7 +28,7 @@ If you discover a security vulnerability within this project, please follow thes
 
 1. **Do not create a public issue.** Instead, contact us directly to responsibly disclose the vulnerability.
 
-2. **Email** [juan.villa@quipux.com](mailto:juan.villa@quipux.com) with the following information:
+2. **Email** [r6ty5r296it6tl4eg5m.constant214@passinbox.com](mailto:r6ty5r296it6tl4eg5m.constant214@passinbox.com) with the following information:
 
    - A description of the vulnerability.
    - Steps to reproduce the issue.
