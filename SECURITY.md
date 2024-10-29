@@ -6,11 +6,10 @@ Security Policy for **GitHub CICD Template** repository includes all required co
 
 We provide security updates for the following versions of our project:
 
-| Version  | Status      | Secure |
-| -------- | ----------- | ------ |
-| 2023.x.x | End-of-life | No     |
-| 2024.7.x | End-of-life | Yes    |
-| 2024.8.x | Supported   | Yes    |
+| Version | Status      | Secure |
+| ------- | ----------- | ------ |
+| 1.0.1   | End-of-life | No     |
+| >1.0.4  | Supported   | Yes    |
 
 ## 🛡️ Security Practices
 
