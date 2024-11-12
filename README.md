@@ -2,6 +2,9 @@
 
 ![CI/CD](https://img.shields.io/badge/CI/CD-Pipeline-blue)
 ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=fff)
+![Python](https://img.shields.io/badge/Python-3.11%2B-blue.svg)
+![Build Status](https://github.com/JuanVilla424/scripts/actions/workflows/ci.yml/badge.svg?branch=main)
+![Status](https://img.shields.io/badge/Status-Stable-green.svg)
 ![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)
 
 Welcome to the **GitHub CI/CD Template** repository! This project provides a robust and flexible CI/CD pipeline setup using GitHub Actions, tailored for project using Python for backend, node frontend, docker-compose or Dockerfile. Leverage this template to automate your development workflow, from testing and building to deployment and monitoring.
