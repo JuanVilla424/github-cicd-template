@@ -1,4 +1,3 @@
----
 # .github/dependabot.yml
 
 version: 2
@@ -10,6 +9,7 @@ updates:
     commit-message:
       prefix: "deps"
     open-pull-requests-limit: 5
+    target-branch: "dev"
   - package-ecosystem: "pip"
     directory: "backend"
     schedule:
@@ -17,3 +17,4 @@ updates:
     commit-message:
       prefix: "deps"
     open-pull-requests-limit: 5
+    target-branch: "dev"

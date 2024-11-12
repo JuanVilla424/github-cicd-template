@@ -214,7 +214,7 @@ Please ensure your contributions adhere to the Code of Conduct and Contribution 
 
 ## 📫 Contact
 
-For any inquiries or support, please open an issue or contact [email@dominio.com](mailto:email@dominio.com).
+For any inquiries or support, please open an issue or contact [r6ty5r296it6tl4eg5m.constant214@passinbox.com](mailto:r6ty5r296it6tl4eg5m.constant214@passinbox.com).
 
 ---
 
