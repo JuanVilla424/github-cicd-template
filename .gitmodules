@@ -2,3 +2,7 @@
 	path = scripts
 	url = https://github.com/JuanVilla424/scripts.git
 	branch = dev
+[submodule "cazira"]
+	path = cazira
+	url = https://github.com/JuanVilla424/cazira
+	branch = dev
