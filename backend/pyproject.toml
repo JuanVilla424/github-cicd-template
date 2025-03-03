@@ -16,7 +16,7 @@ certifi="^2024.8.30"
 [tool.poetry.dev-dependencies]
 pylint = "^3.3.1"
 black = "^24.3.0"
-isort = "^5.12.0"
+isort = "^6.0.1"
 pre-commit = "^4.0.1"
 alembic = { version = ">=1.11.1", optional = true }
 pytest = { version = ">=7.3.1", optional = true }
