@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "backend"
-version = "1.0.11"
+version = "1.0.12"
 description = "Github CICD Template Repository."
 authors = ["B <g46327wsj1.marbling129@passinbox.com>"]
 license = "Other"
@@ -15,6 +15,7 @@ certifi = "^2025.1.31"
 
 [tool.poetry.dev-dependencies]
 pylint = "^3.3.1"
+yamllint = "^1.35.0"
 black = "^25.1.0"
 isort = "^6.0.1"
 pre-commit = "^4.0.1"
@@ -65,5 +66,5 @@ ensure_newline_before_comments = true
 rcfile = ".pylintrc"
 
 [build-system]
-requires = ["poetry-core>=1.0.11"]
+requires = ["poetry-core>=1.0.12"]
 build-backend = "poetry.core.masonry.api"
