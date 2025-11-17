@@ -14,7 +14,7 @@ idna = "^3.0"
 certifi = "^2025.1.31"
 
 [tool.poetry.dev-dependencies]
-pylint = "^3.3.1"
+pylint = "^4.0.3"
 yamllint = "^1.35.0"
 black = "^25.1.0"
 isort = "^6.0.1"
