@@ -17,7 +17,7 @@ certifi = "^2026.1.4"
 pylint = "^4.0.4"
 yamllint = "^1.35.0"
 black = "^26.1.0"
-isort = "^6.0.1"
+isort = "^8.0.0"
 pre-commit = "^4.0.1"
 alembic = { version = ">=1.11.1", optional = true }
 pytest = { version = ">=7.3.1", optional = true }
