@@ -32,6 +32,9 @@ Welcome to the **GitHub CI/CD Template** repository! This project provides a rob
 - **Code Quality Checks:** Enforce coding standards with linting and formatting tools.
 - **Build Optimization:** Optimize build processes for faster deployment cycles.
 - **Notifications:** Receive updates and alerts on pipeline status via email or chat integrations.
+- **Automated Version Control:** Automatic version bumping, tagging, and promotion across branches (dev → test → prod → main).
+- **Automated Release Notes:** GitHub Releases with categorized changelogs generated from conventional commits (Features, Bug Fixes, Refactors, etc.).
+- **Changelog Generation:** Automatic CHANGELOG.md updates on every version bump via pre-commit hooks.
 
 ## 🚀 Getting Started
 
@@ -130,7 +133,6 @@ pre-commit run --all-files
 ### 📌 Extra Steps
 
 1. **Docker**:
-
    - Using MacOs or Linux:
      ```bash
      brew install hadolint
@@ -147,7 +149,6 @@ pre-commit run --all-files
 **To utilize the CI/CD pipeline, follow these steps**:
 
 1. **Configure GitHub Actions**
-
    - Navigate to the .github/workflows/ directory.
    - Customize the ci.yml file according to your project's requirements.
    - Customize the python.yml file to format and lint python code.
@@ -155,16 +156,21 @@ pre-commit run --all-files
    - Customize the release-controller file to add or remove **[backend, frontend, docker deployment, database]**
 
 2. **Set Up Secrets**
-
    - Go to your GitHub repository settings.
    - Navigate to Secrets and add necessary secrets like CODECOV_KEY, etc.
+   - Add `ACCESS_TOKEN` (Personal Access Token) for cross-repository submodule access and workflow triggers.
 
 3. **Triggering the Pipeline**
-
    - Push to Branches: Pushing code to dev, test, prod, or main branches will trigger the pipeline.
    - Pull Requests: Opening or updating pull requests will run tests and checks.
 
-4. **Monitoring Pipeline Status**
+4. **Version Bumping & Releases**
+   - Add `[patch candidate]`, `[minor candidate]`, or `[major candidate]` to your commit message to trigger a version bump.
+   - The pre-push hooks will automatically bump the version in `pyproject.toml` and amend the commit.
+   - The Version Controller workflow creates tags and promotion PRs across the branch chain (dev → test → prod → main).
+   - On main, a GitHub Release is automatically created with categorized release notes parsed from conventional commits.
+
+5. **Monitoring Pipeline Status**
    - Check the Actions tab in your GitHub repository to monitor the status of your workflows.
    - Integrate notifications with Slack, Email, or other communication tools for real-time updates.
 
@@ -223,4 +229,4 @@ For any inquiries or support, please open an issue or contact [r6ty5r296it6tl4eg
 
 ## 📜 License
 
-2025 - This project is licensed under the [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.en.html). You are free to use, modify, and distribute this software under the terms of the GPL-3.0 license. For more details, please refer to the [LICENSE](LICENSE) file included in this repository.
+2026 - This project is licensed under the [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.en.html). You are free to use, modify, and distribute this software under the terms of the GPL-3.0 license. For more details, please refer to the [LICENSE](LICENSE) file included in this repository.
