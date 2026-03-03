@@ -11,18 +11,25 @@ on:
       - prod
       - main
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   version-controller:
     runs-on: ubuntu-latest
+    env:
+      REPO_NAME: ${{ github.event.repository.name }}
+      REPO_FULL: ${{ github.repository }}
     steps:
       - name: Checkout Repository
         id: checkout_repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Set up Python
         id: setup_python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - name: Install Dependencies
@@ -65,18 +72,28 @@ jobs:
           git rm -r --cached scripts || true
           rm -rf scripts
           git submodule add -b ${{ steps.determine_branch.outputs.current_branch }} https://github.com/JuanVilla424/scripts.git
-#      - name: Run Changelog Generator
-#        id: run_changelog
-#        run: |
-#          python scripts/generate_changelog/main.py
+      - name: Run Changelog Generator
+        id: run_changelog
+        run: |
+          python scripts/generate_changelog/main.py
+      - name: Commit Changelog Updates
+        id: commit_changelog
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add CHANGELOG.md || true
+          git diff --cached --quiet || git commit -m "docs(core): update changelog"
       - name: Check for Forbidden Character
         id: check_arrow
         run: |
-          if [[ "${{ steps.get_commit.outputs.commit_message }}" == *"→"* && "${{ steps.get_commit.outputs.commit_message }}" == *"Bump version:"* ]]; then
+          COMMIT_MSG="${COMMIT_MESSAGE}"
+          if [[ "$COMMIT_MSG" == *"→"* && "$COMMIT_MSG" == *"Bump version:"* ]]; then
             echo "contains_arrow=true" >> $GITHUB_OUTPUT
           else
             echo "contains_arrow=false" >> $GITHUB_OUTPUT
           fi
+        env:
+          COMMIT_MESSAGE: ${{ steps.get_commit.outputs.commit_message }}
       - name: Create Tag
         id: create_tag
         if: steps.check_arrow.outputs.contains_arrow == 'true'
@@ -93,7 +110,7 @@ jobs:
         run: |
           git push origin "${{ steps.create_tag.outputs.tag_name }}"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       - name: Ensure on Current Branch
         id: ensure_branch
         if: steps.check_arrow.outputs.contains_arrow == 'true'
@@ -102,7 +119,7 @@ jobs:
       - name: Create Pull Request
         id: create_pull_request
         if: steps.check_arrow.outputs.contains_arrow == 'true' && github.ref != 'refs/heads/main'
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
@@ -141,5 +158,100 @@ jobs:
           TAG_NAME="v${VERSION}"
           git tag "$TAG_NAME"
           git push origin "$TAG_NAME"
+          echo "tag_name=$TAG_NAME" >> $GITHUB_OUTPUT
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+      - name: Generate Release Notes
+        id: release_notes
+        if: github.ref == 'refs/heads/main' && steps.check_arrow.outputs.contains_arrow == 'true'
+        run: |
+          TAG="${{ steps.push_tag_to_main.outputs.tag_name }}"
+          PREV_TAG=$(git describe --tags --abbrev=0 "${TAG}^" 2>/dev/null || echo "")
+
+          if [ -z "$PREV_TAG" ]; then
+            COMMITS=$(git log "$TAG" --pretty=format:"%s")
+          else
+            COMMITS=$(git log "${PREV_TAG}..${TAG}" --pretty=format:"%s")
+          fi
+
+          FEATURES=""
+          FIXES=""
+          DOCS=""
+          REFACTORS=""
+          PERF=""
+          CHORES=""
+          STYLES=""
+          TESTS=""
+          OTHER=""
+
+          while IFS= read -r line; do
+            case "$line" in
+              "Bump version:"*|"Merge branch"*|"Merge pull request"*) continue ;;
+            esac
+
+            clean=$(echo "$line" | sed 's/^[^a-zA-Z]* *//')
+
+            if echo "$clean" | grep -qE '^(feat|fix|docs|style|refactor|perf|test|chore)(\([^)]+\))?:'; then
+              TYPE=$(echo "$clean" | sed -E 's/^(feat|fix|docs|style|refactor|perf|test|chore).*/\1/')
+              DESC=$(echo "$clean" | sed -E 's/^(feat|fix|docs|style|refactor|perf|test|chore)(\([^)]+\))?:\s*//')
+              DESC=$(echo "$DESC" | sed -E 's/\s*\[(minor|major|patch) candidate\]\s*$//')
+              SCOPE=$(echo "$clean" | sed -nE 's/^[a-z]+\(([^)]+)\):.*/\1/p')
+
+              if [ -n "$SCOPE" ]; then
+                ENTRY="- **${SCOPE}**: ${DESC}"
+              else
+                ENTRY="- ${DESC}"
+              fi
+
+              case "$TYPE" in
+                feat)     FEATURES="${FEATURES}${ENTRY}\n" ;;
+                fix)      FIXES="${FIXES}${ENTRY}\n" ;;
+                docs)     DOCS="${DOCS}${ENTRY}\n" ;;
+                style)    STYLES="${STYLES}${ENTRY}\n" ;;
+                refactor) REFACTORS="${REFACTORS}${ENTRY}\n" ;;
+                perf)     PERF="${PERF}${ENTRY}\n" ;;
+                test)     TESTS="${TESTS}${ENTRY}\n" ;;
+                chore)    CHORES="${CHORES}${ENTRY}\n" ;;
+              esac
+            else
+              if [ -n "$clean" ]; then
+                OTHER="${OTHER}- ${clean}\n"
+              fi
+            fi
+          done <<< "$COMMITS"
+
+          BODY="## What's Changed\n\n"
+
+          [ -n "$FEATURES" ] && BODY="${BODY}### Features\n${FEATURES}\n"
+          [ -n "$FIXES" ] && BODY="${BODY}### Bug Fixes\n${FIXES}\n"
+          [ -n "$DOCS" ] && BODY="${BODY}### Documentation\n${DOCS}\n"
+          [ -n "$REFACTORS" ] && BODY="${BODY}### Refactors\n${REFACTORS}\n"
+          [ -n "$PERF" ] && BODY="${BODY}### Performance\n${PERF}\n"
+          [ -n "$STYLES" ] && BODY="${BODY}### Styles\n${STYLES}\n"
+          [ -n "$TESTS" ] && BODY="${BODY}### Tests\n${TESTS}\n"
+          [ -n "$CHORES" ] && BODY="${BODY}### Chores\n${CHORES}\n"
+          [ -n "$OTHER" ] && BODY="${BODY}### Other\n${OTHER}\n"
+
+          if [ -n "$PREV_TAG" ]; then
+            BODY="${BODY}**Full Changelog**: https://github.com/${REPO_FULL}/compare/${PREV_TAG}...${TAG}\n"
+          fi
+
+          {
+            echo "body<<RELEASE_NOTES_EOF"
+            echo -e "$BODY"
+            echo "RELEASE_NOTES_EOF"
+          } >> "$GITHUB_OUTPUT"
+        env:
+          REPO_FULL: ${{ env.REPO_FULL }}
+      - name: Create GitHub Release
+        id: create_release
+        if: github.ref == 'refs/heads/main' && steps.check_arrow.outputs.contains_arrow == 'true'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.push_tag_to_main.outputs.tag_name }}
+          name: Release ${{ steps.push_tag_to_main.outputs.tag_name }}
+          body: ${{ steps.release_notes.outputs.body }}
+          draft: false
+          prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
