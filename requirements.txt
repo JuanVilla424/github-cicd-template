@@ -5,7 +5,7 @@ pre-commit>=4.0.0
 pylint>=3.3.1
 
 # Poetry for package management alternative
-poetry>=1.8.4
+poetry>=2.4.1
 
 # Bump2Version for version release control
 bump2version>=1.0.0
