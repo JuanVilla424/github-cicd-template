@@ -1,3 +1,28 @@
+## [1.0.14] - 2026-03-03
+
+### Features
+
+- **core**: add inline release creation and update cicd workflows (`patch candidate`)
+
+### Bug Fixes
+
+- **deps**: update setuptools requirement from ^78.1.0 to ^80.9.0 (#73)
+- **deps**: update setuptools requirement from ^78.1.0 to ^80.9.0 in /backend (#74)
+- **deps**: update pytest-cov requirement from ^6.1.1 to ^7.0.0 in /backend (#75)
+- **deps**: update pylint requirement from ^3.3.1 to ^4.0.4 in /backend (#79)
+- **deps**: update certifi requirement from ^2025.1.31 to ^2026.1.4 in /backend (#80)
+- **deps**: update black requirement from ^25.1.0 to ^26.1.0 in /backend (#81)
+- **deps**: update black requirement in /backend
+- **deps**: update certifi requirement in /backend
+- **deps**: update pylint requirement from ^3.3.1 to ^4.0.4 in /backend
+- **deps**: update pytest-cov requirement in /backend
+- **deps**: update setuptools requirement in /backend
+- **deps**: update setuptools requirement from ^78.1.0 to ^80.9.0
+
+### Documentation
+
+- **core**: update readme with release automation features (`patch candidate`)
+
 ## [1.0.13] - 2025-04-06
 
 ### Bug Fixes
@@ -57,6 +82,11 @@
 ### Styles
 
 - **core**: fixed badges (`patch candidate`)
+
+## [1.0.7] - 2024-11-11
+
+### Styles
+
 - **core**: fixed badges (`patch candidate`)
 
 ## [1.0.6] - 2024-11-11
@@ -68,23 +98,12 @@
 
 ## [1.0.5] - 2024-10-28
 
-### Features
-
-- **core**: fixed version-controller.yml create_tag behavior error (#10)
-- **core**: fixed template artifacts (#6)
-
 ### Chores
 
 - **core**: updated scripts submodule (`patch candidate`)
 - **core**: updated scripts submodule
 - **core**: updated scripts submodule
 - **core**: update scripts module
-- **deps**: update setuptools requirement from ^67.0.0 to ^75.2.0 in /backend in the pip group across 1 directory (#8) (#9)
-
-### Other Changes
-
-- Update CNAME
-- Create CNAME
 
 ## [1.0.4] - 2024-10-24
 
@@ -105,6 +124,12 @@
 - **core**: version controller main branch (`patch candidate`)
 
 ## [1.0.2] - 2024-10-21
+
+### Chores
+
+- **core**: fixed auxiliary hook scripts (`patch candidate`)
+
+## [1.0.1] - 2024-10-21
 
 ### Features
 
@@ -129,7 +154,6 @@
 
 ### Chores
 
-- **core**: fixed auxiliary hook scripts (`patch candidate`)
 - **core**: fixed auxiliary hook scripts (`patch candidate`)
 - **core**: fixed auxiliary hook scripts (`patch candidate`)
 - **core**: fixed auxiliary hook scripts
