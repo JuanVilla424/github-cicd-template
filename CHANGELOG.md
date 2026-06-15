@@ -1,3 +1,35 @@
+## [1.0.15] - 2026-06-15
+
+### Bug Fixes
+
+- **deps**: update poetry requirement from >=1.8.4 to >=2.4.1 (#97)
+- **deps**: update black requirement from ^25.1.0 to >=25.1,<27.0 (#96)
+- **deps**: update pylint requirement from ^3.3.0 to >=3.3,<5.0 (#95)
+- **deps**: update alembic requirement from >=1.11.1 to >=1.18.4 (#94)
+- **deps**: update setuptools requirement from ^80.9.0 to >=80.9,<83.0 (#93)
+- **deps**: update idna requirement from ^3.0 to ^3.11 in /backend (#92)
+- **deps**: update pylint requirement from ^4.0.4 to ^4.0.5 in /backend (#91)
+- **deps**: update pytest-cov requirement from ^7.0.0 to ^7.1.0 in /backend (#89)
+- **deps**: update black requirement from ^26.1.0 to ^26.3.1 in /backend (#88)
+- **deps**: update poetry requirement from >=1.8.4 to >=2.4.1
+- **deps**: update black requirement from ^25.1.0 to >=25.1,<27.0
+- **deps**: update pylint requirement from ^3.3.0 to >=3.3,<5.0
+- **deps**: update alembic requirement from >=1.11.1 to >=1.18.4
+- **deps**: update setuptools requirement from ^80.9.0 to >=80.9,<83.0
+- **deps**: update idna requirement from ^3.0 to ^3.11 in /backend
+- **deps**: update pylint requirement from ^4.0.4 to ^4.0.5 in /backend
+- **deps**: update pytest-cov requirement in /backend
+- **deps**: update black requirement in /backend
+- **deps**: update isort requirement from ^6.0.1 to ^8.0.1 in /backend (#84)
+- **deps**: update setuptools requirement from ^80.9.0 to ^82.0.0 in /backend (#83)
+- **deps**: update isort requirement from ^6.0.1 to ^8.0.1 in /backend
+- **deps**: update setuptools requirement in /backend
+
+### Chores
+
+- **core**: bump coverage requirement to 7.13.5 (`patch candidate`)
+- **core**: bump scripts submodule to v1.1.23
+
 ## [1.0.14] - 2026-03-03
 
 ### Features
