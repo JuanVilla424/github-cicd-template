@@ -22,14 +22,14 @@ idna>=3.0
 certifi>=2024.8.30
 
 # Alembic for Database Migrations
-alembic>=1.11.1
+alembic>=1.18.4
 
 # Pytest for Unit/Integration Testing
 pytest>=7.3.1
 pytest-cov>=4.0.0
 
 # Coverage Reporting
-coverage>=7.2.5
+coverage>=7.13.5
 
 # Lint Check
 yamllint>=1.35.0
