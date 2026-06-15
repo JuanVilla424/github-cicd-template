@@ -1,3 +1,9 @@
+## [1.0.16] - 2026-06-15
+
+### Bug Fixes
+
+- **core**: anchor bumpversion search so poetry-core stays fixed (`patch candidate`)
+
 ## [1.0.15] - 2026-06-15
 
 ### Bug Fixes
