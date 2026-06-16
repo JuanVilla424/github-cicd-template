@@ -1,3 +1,13 @@
+## [1.0.17] - 2026-06-15
+
+### Bug Fixes
+
+- **core**: align pylint ignore with .venv and comment suggestion-mode
+
+### Chores
+
+- **core**: promote pylint alignment (`patch candidate`)
+
 ## [1.0.16] - 2026-06-15
 
 ### Bug Fixes
