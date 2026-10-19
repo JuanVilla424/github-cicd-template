@@ -1,3 +1,9 @@
+## [1.0.18] - 2026-10-19
+
+### Bug Fixes
+
+- **core**: remove the openssf scorecard steps from the main ci (`patch candidate`)
+
 ## [1.0.17] - 2026-06-15
 
 ### Bug Fixes
